@@ -61,15 +61,15 @@ struct Ship {
         self.hitTracker = HitTracker()
         self.isVertical = isVertical
         self.location = location
-        self.isWooden = true
+        self.isWooden = false
     }
     
-    init(length: Int, location: GridLocation, isVertical: Bool, isWooden: Bool, hitTracker: HitTracker) {
+    init(length: Int, location: GridLocation, isVertical: Bool, isWooden: Bool) {
         self.length = length
         self.hitTracker = HitTracker()
         self.isVertical = isVertical
         self.location = location
-        self.isWooden = false
+        self.isWooden = isWooden
     }
 }
 
@@ -88,12 +88,12 @@ struct Mine: PenaltyCell {
     
     init(location: GridLocation, penaltyText: String) {
         self.location = location
+        self.guaranteesHit = false
         self.penaltyText = penaltyText
-        self.guaranteesHit = true
     }
     init(location: GridLocation, guaranteesHit: Bool, penaltyText: String) {
         self.location = location
-        self.guaranteesHit = true
+        self.guaranteesHit = guaranteesHit
         self.penaltyText = penaltyText
     }
 }
@@ -106,12 +106,12 @@ struct SeaMonster: PenaltyCell {
     
     init(location: GridLocation, penaltyText: String) {
         self.location = location
+        self.guaranteesHit = false
         self.penaltyText = penaltyText
-        self.guaranteesHit = true
     }
     init(location: GridLocation, guaranteesHit: Bool, penaltyText: String) {
         self.location = location
-        self.guaranteesHit = true
+        self.guaranteesHit = guaranteesHit
         self.penaltyText = penaltyText
     }
 }
@@ -120,19 +120,19 @@ class ControlCenter {
     
     func placeItemsOnGrid(human: Human) {
         
-        let smallShip = Ship(length: 2, location: GridLocation(x: 3, y: 4), isVertical: true, isWooden: false, hitTracker: HitTracker())
+        let smallShip = Ship(length: 2, location: GridLocation(x: 3, y: 4), isVertical: true)
         human.addShipToGrid(smallShip)
         
-        let mediumShip1 = Ship(length: 3, location: GridLocation(x: 0, y: 0), isVertical: false, isWooden: false, hitTracker: HitTracker())
+        let mediumShip1 = Ship(length: 3, location: GridLocation(x: 0, y: 0), isVertical: false, isWooden: true)
         human.addShipToGrid(mediumShip1)
         
-        let mediumShip2 = Ship(length: 3, location: GridLocation(x: 3, y: 1), isVertical: false, isWooden: true, hitTracker: HitTracker())
+        let mediumShip2 = Ship(length: 3, location: GridLocation(x: 3, y: 1), isVertical: false)
         human.addShipToGrid(mediumShip2)
         
-        let largeShip = Ship(length: 4, location: GridLocation(x: 6, y: 3), isVertical: true, isWooden: true, hitTracker: HitTracker())
+        let largeShip = Ship(length: 4, location: GridLocation(x: 6, y: 3), isVertical: true, isWooden: true)
         human.addShipToGrid(largeShip)
         
-        let xLargeShip = Ship(length: 5, location: GridLocation(x: 7, y: 2), isVertical: true, isWooden: false, hitTracker: HitTracker())
+        let xLargeShip = Ship(length: 5, location: GridLocation(x: 7, y: 2), isVertical: true)
         human.addShipToGrid(xLargeShip)
         
         let mine1 = Mine(location: GridLocation(x: 6, y: 0), guaranteesHit: true, penaltyText: "Mine #1 hit! Opponent gets a guaranteed hit.")
