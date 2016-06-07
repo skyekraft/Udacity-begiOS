@@ -138,7 +138,7 @@ class ControlCenter {
         let mine1 = Mine(location: GridLocation(x: 6, y: 0), guaranteesHit: true, penaltyText: "Mine #1 hit! Opponent gets a guaranteed hit.")
         human.addMineToGrid(mine1)
         
-        let mine2 = Mine(location: GridLocation(x: 3, y: 3), guaranteesHit: true, penaltyText: "Mine #2 hit! Oppponent gets a guaranteed hit.")
+        let mine2 = Mine(location: GridLocation(x: 3, y: 3), penaltyText: "Mine #2 hit! Oppponent gets a guaranteed hit.")
         human.addMineToGrid(mine2)
         
         let seamonster1 = SeaMonster(location: GridLocation(x: 5, y: 6), guaranteesHit: true, penaltyText: "First SeaMonster hit!")

@@ -233,20 +233,20 @@ class Player {
         // random mine placement
         for _ in 0..<numberOfMines {
             var location = RandomGridLocation()
-            var mine = Mine(location: location, guaranteesHit: true, penaltyText: "You've hit a mine!")
+            var mine = Mine(location: location, guaranteesHit: true, penaltyText: Settings.DefaultMineText)
             while !gridViewController.addMine(mine, playerType: .Computer) {
                 location = RandomGridLocation()
-                mine = Mine(location: location, guaranteesHit: true, penaltyText: "You've hit a mine!!")
+                mine = Mine(location: location, guaranteesHit: true, penaltyText: Settings.DefaultMineText)
             }
         }
         
         // random seamonster placement
         for _ in 0..<numberOfSeamonsters {
             var location = RandomGridLocation()
-            var seaMonster = SeaMonster(location: location, guaranteesHit: true, penaltyText: "You've grazed a sea monster!")
+            var seaMonster = SeaMonster(location: location, guaranteesHit: true, penaltyText: Settings.DefaultMonsterText)
             while !gridViewController.addSeamonster(seaMonster, playerType: .Computer) {
                 location = RandomGridLocation()
-                seaMonster = SeaMonster(location: location, guaranteesHit: true, penaltyText: "You've grazed a sea monster!!")
+                seaMonster = SeaMonster(location: location, guaranteesHit: true, penaltyText: Settings.DefaultMonsterText)
             }
         }
     }
